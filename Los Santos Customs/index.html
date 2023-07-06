@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los santos customs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+  </head>
+  <body onload="fetchCars()">
+    <header class="text-center">
+      <img src="img/lscustoms.png" class="logo img-fluid" />
+    </header>
+    <!--Car creation container-->
+
+    <div class="container fs-2">
+      <h2>Ls Customs <small>by Alexdergott</small></h2>
+      <div class="jumbotron">
+        <form id="carForm">
+          <div class="form-group">
+            <label for="carBrand" class="form-label">Car brand</label>
+            <input type="text" id="carBrand" placeholder="Car brand..."
+              class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="carModel" class="form-label">Car model</label>
+            <input type="text" id="carModel" placeholder="Car model..."
+              class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="carYear" class="form-label">Car year</label>
+            <input type="number" id="carYear" placeholder="Car year..."
+              class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="carColor" class="form-label">Car color</label>
+            <input type="color" id="carColor" placeholder="Car name..."
+              class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="carRegistration" class="form-label">Car registration</label>
+            <input type="text" id="carRegistration"
+              placeholder="Car registration..." class="form-control"
+              maxlength="7" required minlength="7" />
+          </div>
+          <button type="submit" class="btn btn-primary">Create car</button>
+          <button type="button" class="btn btn-info" id="pdfButton">Download pdf</button>
+        </form>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="carsList">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://chancejs.com/chance.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+    
+    <script src="main.js"></script>
+
+  </body>
+</html>

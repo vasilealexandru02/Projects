@@ -1,0 +1,15 @@
+body {
+  background-color: #f3bc06;
+  color: black;
+}
+.logo {
+  width: 10%;
+  padding: 10px;
+}
+
+header {
+  background-color: black;
+}
+.row {
+  padding-top: 20px;
+}
