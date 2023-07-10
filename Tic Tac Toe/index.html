@@ -19,45 +19,40 @@
     <body>
         <header class="container">
             <h1 class="text-center">Tic Tac Toe</h1>
-            <h5 class="text-center">Welcome to Tic Tac Toe! Press the button to play the game!</h3>
+            <h5 class="text-center" id="gameText">Welcome to Tic Tac Toe! Press the button to play the game!</h3>
             <button type="button" class="btn btn-dark" id="play" onclick="playGame()">Play</button>
         </header>
         <div class="container" id="main">
             <!--Primera fila -->
             <div class="row">
-                <div class="col gameboard" onclick="clickedSquare(event)" id="1">
+                <div class="col gameboard" onclick="clickedSquare(event)" id="0">
+                </div>
+                <div class="col gameboard" id="1" onclick="clickedSquare(event)">
                 </div>
                 <div class="col gameboard" id="2" onclick="clickedSquare(event)">
-                </div>
-                <div class="col gameboard" id="3" onclick="clickedSquare(event)">
                 </div>
             </div>
             <!--Segunda fila -->
             <div class="row">
-                <div class="col gameboard" id="4" onclick="clickedSquare(event)">
+                <div class="col gameboard" id="3" onclick="clickedSquare(event)">
                
                 </div>
-                <div class="col gameboard" id="5" onclick="clickedSquare(event)">
+                <div class="col gameboard" id="4" onclick="clickedSquare(event)">
                 </div>
-                <div class="col gameboard" id="6" onclick="clickedSquare(event)"> 
+                <div class="col gameboard" id="5" onclick="clickedSquare(event)"> 
                    
                 </div>
             </div>
             <!--Tercera fila -->
             <div class="row">
-                <div class="col gameboard" id="7" onclick="clickedSquare(event)">
+                <div class="col gameboard" id="6" onclick="clickedSquare(event)">
                     
+                </div>
+                <div class="col gameboard" id="7" onclick="clickedSquare(event)">
+                   
                 </div>
                 <div class="col gameboard" id="8" onclick="clickedSquare(event)">
                    
-                </div>
-                <div class="col gameboard" id="9" onclick="clickedSquare(event)">
-                   
-                </div>
-            </div>  
-            <div class="row">
-                <div class="col">
-                    <p id="gameText"></p>
                 </div>
             </div>  
         </div>
