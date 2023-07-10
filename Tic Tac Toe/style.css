@@ -1,0 +1,16 @@
+
+*{
+    box-sizing: border-box;
+    padding:0;
+}
+.gameboard {
+  background-color: #e8eaed;
+
+  height: 200px;
+  margin: 10px;
+  transition: background-color 0.1s ease; 
+}
+.gameboard:hover {
+  background-color: #cfd1d4;
+}
+
