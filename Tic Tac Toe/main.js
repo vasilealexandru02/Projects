@@ -48,7 +48,7 @@ function clickedSquare(e) {
       clickedSquare.disabled = true; // Set the disabled attribute to true
       let clickedSquareId = e.target.id;
       insertIntoGameboard(clickedSquareId);
-      checkBoard(letterSelected);
+      console.log(checkBoard(letterSelected));
     }
     console.log(gameboard);
     switchLetter();
@@ -103,7 +103,7 @@ function checkBoard(lastLetter) {
         gameboard[i][j + 1] == letterSelected &&
         gameboard[i][j + 2] == letterSelected
       ) {
-        console.log("Player row", letterSelected, "won!");
+        return true;
       }
       j = 3;
     }
@@ -120,9 +120,39 @@ function checkBoard(lastLetter) {
         gameboard[i + 1][j] == letterSelected &&
         gameboard[i + 2][j] == letterSelected
       ) {
-        console.log("Player column", letterSelected, "won!");
+        return true;
       }
       i = 3;
     }
   }
+  // Iteration over diagonals
+  // Left to right diagonal
+  console.log("diagonal izquierda derecha");
+  for (let k = 0; k < filas + columnas - 1; k++) {
+    let inicioFila = Math.max(0, k - columnas + 1);
+    let inicioColumna = Math.min(k, columnas - 1);
+    for (let i = inicioFila, j = inicioColumna; i < filas && j >= 0; i++, j--) {
+      if (k == 2) {
+        console.log(gameboard[i][j]);
+      }
+      //console.log(gameboard[i][j]);
+    }
+  }
+  if (letterMatch == 3) {
+    return true;
+  }
+
+  console.log("diagonal derecha izquierda");
+  // Iterar sobre la matriz en diagonal de derecha a izquierda
+  for (let k = 0; k < filas + columnas - 1; k++) {
+    let inicioFila = Math.max(0, k - columnas + 1);
+    let inicioColumna = Math.min(k, columnas - 1);
+    for (let i = inicioFila, j = inicioColumna; i < filas && j >= 0; i++, j--) {
+      if (k == 2) {
+        console.log(gameboard[i][columnas - 1 - j]);
+      }
+    }
+  }
+
+  return false;
 }
