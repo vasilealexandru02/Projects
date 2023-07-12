@@ -4,7 +4,6 @@
 }
 .gameboard {
   background-color: #e8eaed;
-
   height: 200px;
   margin: 10px;
   transition: background-color 0.1s ease;

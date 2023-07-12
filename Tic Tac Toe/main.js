@@ -2,7 +2,17 @@ var generatedNumber
 var letters = ['X', '0']
 var letterSelected
 var gameboard
+var attempts
+
 function playGame () {
+  var gameBoardCell = document.getElementsByClassName('gameboard')
+  for (let index = 0; index < gameBoardCell.length; index++) {
+    gameBoardCell[index].disabled = false // Set the disabled attribute to true
+    gameBoardCell[index].style.opacity = '1' // For visual indication (optional)
+    gameBoardCell[index].style.pointerEvents = 'auto' // Disable pointer events (op
+  }
+
+  attempts = 0
   gameboard = [
     ['Z', 'Z', 'Z'],
     ['Z', 'Z', 'Z'],
@@ -24,7 +34,6 @@ function generateLetter () {
 }
 
 function switchLetter () {
-  // debugger;
   if (letterSelected == letters[0]) {
     letterSelected = letters[1]
   } else {
@@ -36,21 +45,27 @@ function switchLetter () {
 }
 
 function clickedSquare (e) {
-  let clickedSquare = document.getElementById(e.target.id)
+  if (attempts != undefined) {
+    attempts++
+    let clickedSquare = document.getElementById(e.target.id)
 
-  // // Apply disabled style
-  // clickedSquare.style.opacity = "0.5"; // For visual indication (optional)
-  // clickedSquare.style.pointerEvents = "none"; // Disable pointer events (op
-  if (clickedSquare.innerHTML == '') {
-    if (letterSelected != undefined) {
-      clickedSquare.innerHTML = `<p class="text-center fs-1 align-middle"  id="${e.target.id}}-text">${letterSelected}</p>`
-      clickedSquare.disabled = true // Set the disabled attribute to true
-      let clickedSquareId = e.target.id
-      insertIntoGameboard(clickedSquareId)
-      checkBoard()
+    if (clickedSquare.innerHTML == '') {
+      if (letterSelected != undefined) {
+        debugger
+        clickedSquare.innerHTML = `<p class="text-center fs-1 align-middle"  id="${e.target.id}}-text">${letterSelected}</p>`
+        clickedSquare.disabled = true // Set the disabled attribute to true
+        clickedSquare.style.opacity = '0.7' // For visual indication (optional)
+        clickedSquare.style.pointerEvents = 'none' // Disable pointer events (op
+        let clickedSquareId = e.target.id
+        insertIntoGameboard(clickedSquareId)
+        checkBoard()
+      }
+      console.log(gameboard)
+      switchLetter()
     }
-    console.log(gameboard)
-    switchLetter()
+    if (attempts == 9) {
+      displayEndGame()
+    }
   }
 }
 
@@ -98,7 +113,6 @@ function checkBoard () {
         gameboard[i][j + 1] == letterSelected &&
         gameboard[i][j + 2] == letterSelected
       ) {
-        debugger
         document.getElementById(
           'modalBody'
         ).innerHTML = `${letterSelected} player won ✌!`
@@ -181,6 +195,10 @@ function checkBoard () {
       }
     }
   }
+}
 
-  return false
+function displayEndGame () {
+  document.getElementById('modalBody').innerHTML = 'Maximum number of attempts!'
+  document.getElementById('staticBackdropLabel').innerHTML = 'Nobody won ❗'
+  document.getElementById('backdropbutton').click()
 }
