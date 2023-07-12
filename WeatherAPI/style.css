@@ -1,0 +1,42 @@
+body {
+  background-color: #132752;
+  color: white;
+  box-sizing: border-box;
+}
+
+input {
+  background-color: #2955b2;
+  color: white;
+  border: 10px;
+  border-color: white;
+  appearance: none;
+}
+input:focus {
+  outline: none;
+}
+
+.cityInput {
+  width: 35%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.msg {
+  font-size: large;
+  margin-top: 10px;
+}
+
+.cityName {
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-size: x-large;
+  width: 30%;
+}
+.cityName img {
+  max-width: 35%;
+}
+
+.lightBlue {
+  color: #415d9a;
+}
