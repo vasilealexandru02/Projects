@@ -3,7 +3,7 @@
   padding: 0;
 }
 .gameboard {
-  background-color: #e8eaed;
+  background-color: #c9cacc;
   height: 200px;
   margin: 10px;
   transition: background-color 0.1s ease;
