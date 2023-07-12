@@ -8,7 +8,6 @@ function playGame () {
     ['Z', 'Z', 'Z'],
     ['Z', 'Z', 'Z']
   ]
-  // debugger;
   var gameboards = document.getElementsByClassName('gameboard')
   for (var i = 0; i < gameboards.length; i++) {
     gameboards[i].innerHTML = ''
@@ -33,7 +32,7 @@ function switchLetter () {
   }
   document.getElementById(
     'gameText'
-  ).innerHTML = `${letterSelected} player turn!`
+  ).innerHTML = `<b>${letterSelected}</b> player turn!`
 }
 
 function clickedSquare (e) {
@@ -48,7 +47,7 @@ function clickedSquare (e) {
       clickedSquare.disabled = true // Set the disabled attribute to true
       let clickedSquareId = e.target.id
       insertIntoGameboard(clickedSquareId)
-      console.log(checkBoard(letterSelected))
+      checkBoard()
     }
     console.log(gameboard)
     switchLetter()
@@ -87,14 +86,10 @@ function insertIntoGameboard (position) {
   }
 }
 
-function checkBoard (lastLetter) {
+function checkBoard () {
   // Obtener el número de filas y columnas
   const filas = gameboard.length
   const columnas = gameboard[0].length
-
-  // if(matriz[0][0]==letterSelected && matriz[0][1]==letterSelected && matriz[0][2]==letterSelected){
-  //   console.log('Player', letterSelected, 'won!')
-  // }else if(matriz[1])
   // First iteration over the rows
   for (let i = 0; i < filas; i++) {
     for (let j = 0; j < columnas; j++) {
@@ -103,7 +98,14 @@ function checkBoard (lastLetter) {
         gameboard[i][j + 1] == letterSelected &&
         gameboard[i][j + 2] == letterSelected
       ) {
-        return true
+        debugger
+        document.getElementById(
+          'modalBody'
+        ).innerHTML = `${letterSelected} player won ✌!`
+        document.getElementById(
+          'staticBackdropLabel'
+        ).innerHTML = `${letterSelected} won!`
+        document.getElementById('backdropbutton').click()
       }
       j = 3
     }
@@ -111,16 +113,18 @@ function checkBoard (lastLetter) {
   // Second iteration over the columns
   for (let j = 0; j < columnas; j++) {
     for (let i = 0; i < filas; i++) {
-      // console.log(gameboard[i][j]);
-      // console.log(gameboard[i+1][j]);
-      // console.log(gameboard[i+2][j])
-      // i=3;
       if (
         gameboard[i][j] == letterSelected &&
         gameboard[i + 1][j] == letterSelected &&
         gameboard[i + 2][j] == letterSelected
       ) {
-        return true
+        document.getElementById(
+          'modalBody'
+        ).innerHTML = `${letterSelected} player won ✌!`
+        document.getElementById(
+          'staticBackdropLabel'
+        ).innerHTML = `${letterSelected} won!`
+        document.getElementById('backdropbutton').click()
       }
       i = 3
     }
@@ -133,22 +137,22 @@ function checkBoard (lastLetter) {
     let inicioColumna = Math.min(k, columnas - 1)
     for (let i = inicioFila, j = inicioColumna; i < filas && j >= 0; i++, j--) {
       if (k == 2) {
-        // console.log('x', i, 'y', j);
-        // console.log(gameboard[i][j]);
-        // console.log(gameboard[i+1][j-1]);
-        // console.log(gameboard[i+2][j-2]);
-        // console.log(gameboard[i][j]);
         if (
           gameboard[i][j] == letterSelected &&
           gameboard[i + 1][j - 1] == letterSelected &&
           gameboard[i + 2][j - 2] == letterSelected
         ) {
-          console.log('diagonal derecha izquierda tres en raya!')
+          document.getElementById(
+            'modalBody'
+          ).innerHTML = `${letterSelected} player won ✌!`
+          document.getElementById(
+            'staticBackdropLabel'
+          ).innerHTML = `${letterSelected} won!`
+          document.getElementById('backdropbutton').click()
         }
         i = 3
         j = 0
       }
-      //console.log(gameboard[i][j]);
     }
   }
 
@@ -164,11 +168,14 @@ function checkBoard (lastLetter) {
           gameboard[i + 1][columnas - 1 - j + 1] == letterSelected &&
           gameboard[i + 2][columnas - 1 - j + 2] == letterSelected
         ) {
-          console.log('diagonal izquierda a derecha tres en raya!')
+          document.getElementById(
+            'modalBody'
+          ).innerHTML = `${letterSelected} player won ✌!`
+          document.getElementById(
+            'staticBackdropLabel'
+          ).innerHTML = `${letterSelected} won!`
+          document.getElementById('backdropbutton').click()
         }
-        // console.log(gameboard[i][columnas - 1 - j]);
-        // console.log(gameboard[i+1][columnas - 1 - j+1]);
-        // console.log(gameboard[i+2][columnas - 1 - j+2]);
         i = 3
         j = 0
       }

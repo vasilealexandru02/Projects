@@ -1,16 +1,27 @@
-
-*{
-    box-sizing: border-box;
-    padding:0;
+* {
+  box-sizing: border-box;
+  padding: 0;
 }
 .gameboard {
   background-color: #e8eaed;
 
   height: 200px;
   margin: 10px;
-  transition: background-color 0.1s ease; 
+  transition: background-color 0.1s ease;
 }
 .gameboard:hover {
   background-color: #cfd1d4;
 }
+#gameText {
+  font-size: x-large;
+}
+#backdropbutton {
+  display: none;
+}
+#modalBody {
+  font-size: large;
+}
 
+header {
+  padding-bottom: 10px;
+}
