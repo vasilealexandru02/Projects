@@ -16,25 +16,26 @@
   <body>
     <div class="container">
       <h1 class="text-center">Simple Weather App</h1>
-      <form id="searchForm">
-        <input
-          type="text"
-          class="form-control cityInput"
-          placeholder="Search for a city"
-        />
-        <button type="submit" class="btn btn-danger">SUBMIT</button>
-      </form>
-      <span class="msg">The city introduced is not valid! 😣</span>
+      <input
+        type="text"
+        class="form-control cityInput"
+        placeholder="Search for a city"
+        id="cityName"
+      />
+      <button
+        type="button"
+        class="btn btn-danger"
+        onclick="searchCityWeather()"
+      >
+        SUBMIT
+      </button>
+      <span id="msg"></span>
     </div>
     <!--Cities results-->
-    <div class="results container">
-      <div class="cityName rounded">
-        <p class="lightBlue">Madrid</p>
-        <p>31 º C</p>
-        <img src="img/weather-forecast.png" />
-        <p class="lightBlue">Clear sky</p>
-      </div>
-    </div>
+    <div
+      class="container d-flex flex-wrap justify-content-around"
+      id="results"
+    ></div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
