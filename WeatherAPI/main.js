@@ -2,12 +2,11 @@ const imageUrl =
   'https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Monochrome/'
 
 function searchCityWeather () {
-  var cityName = document.getElementById('cityName').value
+  const cityName = document.getElementById('cityName').value
   const cityinfo = fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=uk&include=days&key=ANAAWVC9KK34JGFSLJVLQNNPG&contentType=json`,
     {
-      method: 'GET',
-      headers: {}
+      method: 'GET'
     }
   )
     .then(response => response.json())
@@ -22,17 +21,16 @@ function searchCityWeather () {
 
   const printCity = () => {
     cityinfo.then(a => {
-      debugger
-      var resultsContainer = document.getElementById('results')
+      const resultsContainer = document.getElementById('results')
       resultsContainer.innerHTML += `<div  class="cityName rounded w-33">
           <p class="lightBlue">${a.resolvedAddress.split(',')[0]}</p>
           <p>${a.days[0].temp} ºC</p>
           <img src="${imageUrl}${a.days[0].icon}.png" />
           <p class="lightBlue">${a.days[0].conditions}</p>
         </div>`
-      console.log(a)
     })
   }
   printCity()
-  var cityName = (document.getElementById('cityName').value = '')
+
+  document.getElementById('cityName').value = ''
 }
