@@ -1,6 +1,7 @@
 import logo from './logo.svg'
 import './App.css'
 import MyButton from './MyButton'
+import ButtonTest from './ButtonTest'
 import { useState } from 'react'
 
 const self = {
@@ -23,11 +24,20 @@ const listContent = products.map(product => (
 ))
 
 function App () {
+  const [buttonCount, setButtonCount] = useState(0)
+
+  function handleClick () {
+    setButtonCount(buttonCount + 1)
+  }
   return (
     <div className='App'>
       <header className='App-header'>
         {/* <img src={logo} className='App-logo' alt='logo' /> */}
         <MyButton />
+        {/* Mis botones de prueba */}
+        <ButtonTest count={buttonCount} onClick={handleClick} />
+
+        <ButtonTest count={buttonCount} onClick={handleClick} />
         <p
           style={{
             color: '#bbd19f',
