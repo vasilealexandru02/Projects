@@ -1,0 +1,9 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/PatronesDeDisegno/.vs
+/PatronesDeDisegno/PatronesDeDisegno/bin/Debug/net6.0
+/PatronesDeDisegno/PatronesDeDisegno/obj
+/PatronesDeDisegno/InyeccionDependencias/obj
+/PatronesDeDisegno/InyeccionDependencias/bin/Debug/net6.0
