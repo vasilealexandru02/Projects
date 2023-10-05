@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Strategy.Coches
 {
-    public class LamborghiniAventador : ICoche
+    public class LamborghiniAventador : ICar
     {
         public void Motor()
         {
-            Console.WriteLine("Soy un Lamborghini Aventador y tengo un motor V12 con muy mala leche ");
+            Console.WriteLine("I'm an Aventador and I have a mad V12 engine!");
         }
     }
 }

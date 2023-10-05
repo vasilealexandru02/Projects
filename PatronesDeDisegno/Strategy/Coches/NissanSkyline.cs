@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Strategy.Coches
 {
-    public class NissanSkyline : ICoche
+    public class NissanSkyline : ICar
     {
         public void Motor()
         {
-            Console.WriteLine("Soy un Nissan Skyline y tengo un motor de  1200CV");
+            Console.WriteLine("I'm a Nissan Skyline and I have a 1200HP engine!");
         }
     }
 }

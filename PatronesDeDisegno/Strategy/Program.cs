@@ -4,23 +4,32 @@
 using Strategy;
 using Strategy.Coches;
 using System;
+using System.Numerics;
 
-//Random random = new Random();
-//List<CarContext> coches = new List<CarContext>();
-//coches.Add(new CarContext(CarContext.TiposCoche.NissanSkyline));
-//coches.Add(new CarContext(CarContext.TiposCoche.LamborghiniAventador));
-//coches.Add(new CarContext(CarContext.TiposCoche.AstonMartinVanquish));
-CarContext car = new CarContext(new LamborghiniAventador());
-car.Motor();
-//elegirCoche();
 
-//void elegirCoche()
-//{
-//    int numeroAleatorio = random.Next(0, coches.Count);
-//    Console.WriteLine("El nº aleatorio que se ha generado es el siguiente: " + numeroAleatorio);
-//    car = coches[numeroAleatorio];
+List<ICar> cars = new List<ICar>()
+{
+    new NissanSkyline(),
+    new LamborghiniAventador(),
+    new AstonMartinVanquish(),
 
-//}
+};
+
+while (true)
+{
+    Console.WriteLine("Choose one of the following cars: ");
+    int counter = 1;
+    foreach (var c in cars)
+    {
+        Console.WriteLine(counter + " - " + c.GetType().Name);
+        counter++;
+    }
+    var option = int.Parse(Console.ReadLine()) - 1;
+
+    CarContext car = new CarContext(cars[option]);
+    car.Motor();
+}
+
 
 
 

@@ -1,15 +1,10 @@
 ﻿using Strategy.Coches;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Strategy
 {
     public class CarContext
     {
-        private ICoche coche;
+        private ICar coche;
 
         public enum TiposCoche
         {
@@ -22,30 +17,7 @@ namespace Strategy
             coche = new NissanSkyline();
         }
 
-        /// <summary>
-        /// En este constructor se crea el tipo de estrategia.
-        /// </summary>
-        /// <param name="tipoDeCoche"></param>
-        public CarContext(TiposCoche tipoDeCoche)
-        {
-            switch (tipoDeCoche)
-            {
-                case TiposCoche.NissanSkyline:
-                    coche = new NissanSkyline();
-                    break;
-
-                case TiposCoche.LamborghiniAventador:
-                    coche = new LamborghiniAventador();
-                    break;
-                case TiposCoche.AstonMartinVanquish:
-                    coche = new AstonMartinVanquish();
-                    break;
-
-                default: break;
-            }
-        }
-
-        public CarContext(ICoche _coche)
+        public CarContext(ICar _coche)
         {
             coche = _coche;
         }

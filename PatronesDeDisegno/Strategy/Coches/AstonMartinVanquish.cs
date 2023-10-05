@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Strategy.Coches
 {
-    public class AstonMartinVanquish : ICoche
+    public class AstonMartinVanquish : ICar
     {
         public void Motor()
         {
-            Console.WriteLine("Soy un Aston Martin Vanquish y tengo un motor de 6000cc");
+            Console.WriteLine("I'm an Aston Martin and I have a 6000cc engine");
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Strategy
 {
-    public interface ICoche
+    public interface ICar
     {
         public abstract void Motor();
     }
