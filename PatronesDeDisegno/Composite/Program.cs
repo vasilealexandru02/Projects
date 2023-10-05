@@ -15,14 +15,20 @@ CakeComposite cake = new CakeComposite("Cake");
 cake.Add(sugar);
 cake.Add(flour);
 cake.Add(eggs);
-cake.CalculatePrice();
+//cake.CalculatePrice();
 Console.WriteLine("Cake price " + cake.Price);
-
+cake.Remove(flour);
 CakeComposite vanillaChocolateCake = new CakeComposite("Vanilla Chocolate Cake");
 
 Ingredient chocolateAndVanilla = new Ingredient("Chocovanilla", 500, 1, "unit");
 vanillaChocolateCake.Add(chocolateAndVanilla);
 vanillaChocolateCake.Add(cake);
 
-vanillaChocolateCake.CalculatePrice();
-Console.WriteLine("Chovanilla cake price: " +vanillaChocolateCake.Price);
+//vanillaChocolateCake.CalculatePrice();
+Console.WriteLine("Chovanilla cake price: " + vanillaChocolateCake.Price);
+
+vanillaChocolateCake.Remove(eggs);
+Console.WriteLine("After removing eggs: " + vanillaChocolateCake.Price);
+
+vanillaChocolateCake.Add(flour);
+Console.WriteLine("After adding flour: " + vanillaChocolateCake.Price);

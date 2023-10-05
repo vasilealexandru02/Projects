@@ -1,5 +1,5 @@
 ﻿// Este patrón de comportamiento trabaja con el "estado" de los objetos
-// Proporciona un comportamiento diferente dependiendo del stado de nuestro objeto, en este caso, comportamientos diferentes en base al estado del servidor
+// Proporciona un comportamiento diferente dependiendo del estado de nuestro objeto, en este caso, comportamientos diferentes en base al estado del servidor
 // See https://aka.ms/new-console-template for more information
 
 
