@@ -17,14 +17,25 @@ public class Mediator : IMediator
     {
         colleagues.Add(colleague);
     }
-    public void Send(string message, Colleague colleague)
+    public void Send(string message, Colleague colleague, bool sendAll)
     {
         foreach (var col in colleagues)
         {
-            if (colleague != col && colleague.GetType() != col.GetType())
+            if (sendAll)
             {
-                col.Receive(message);
+                if (colleague != col)
+                {
+                    col.Receive(message);
+                }
             }
+            else
+            {
+                if (colleague != col && colleague.GetType() != col.GetType())
+                {
+                    col.Receive(message);
+                }
+            }
+
         }
 
     }
