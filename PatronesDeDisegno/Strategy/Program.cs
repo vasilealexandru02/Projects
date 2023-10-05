@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-// Patron de comportamiento/ funcionamiento strategy
+// Patron de comportamiento/ funcionamiento strategy, sirve para cambar la estrategia o comportamiento en tiempo de ejecución
 
 using Strategy;
 using Strategy.Coches;
