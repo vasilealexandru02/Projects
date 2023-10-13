@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryMethod
 {
-    internal class HyundaiI30N : Coche
+    public class HyundaiI30N : Coche
     {
         public override int Caballos()
         {

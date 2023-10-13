@@ -26,5 +26,16 @@ namespace FactoryMethod
 
             }
         }
+
+        public static NissanGTR createNissan()
+        {
+            return new NissanGTR();
+        }
+
+        public static HyundaiI30N createHyundai()
+        {
+            return new HyundaiI30N();
+        }
+
     }
 }

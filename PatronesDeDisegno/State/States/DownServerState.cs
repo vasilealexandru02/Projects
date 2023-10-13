@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace State
+namespace State.States
 {
-    public class OverloadedServerState : ServerState
+    public class DownServerState : ServerState
     {
         public override void Response()
         {
-            Task.Delay(1000);
-            Console.WriteLine("HTTP 200 with 1000ms delay");
+            Console.WriteLine("HTTP 503");
         }
     }
 }

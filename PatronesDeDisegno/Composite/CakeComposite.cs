@@ -19,10 +19,8 @@ namespace Composite
             if (!ingredients.Contains(ingredient))
             {
                 Price += ingredient.Price;
+                ingredients.Add(ingredient);
             }
-            
-            ingredients.Add(ingredient);
-
         }
 
         public void Remove(Component ingredient)

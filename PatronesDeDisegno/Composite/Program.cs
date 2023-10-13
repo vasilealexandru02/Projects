@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-// Composite, resuelve la problemática de crear objetos a partr de otros objetos. En este caso, se podría crear pasteles a partir de otros pastles y esto se puede extrapolar al caso que a mi me interese
+// Composite, resuelve la problemática de crear objetos a partir de otros objetos. En este caso, se podría crear pasteles a partir de otros pasteles y esto se puede extrapolar al caso que a mi me interese
 
 // Es un patrón de diseño de creación de objetos
 
