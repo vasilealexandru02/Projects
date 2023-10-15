@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Views.CarGarageView"
+             xmlns:viewmodel="clr-namespace:TestXamarin.ViewModels"
+             xmlns:models="clr-namespace:TestXamarin.Models"
+             x:DataType="viewmodel:CarGarageViewModel">
+    <ContentPage.BindingContext>
+        <viewmodel:CarGarageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView ItemsSource="{Binding CarGroup}"
+                      HasUnevenRows="True"
+                      ItemSelected="ListView_ItemSelected"
+                      ItemTapped="ListView_ItemTapped"
+                      
+                      IsGroupingEnabled="True"
+                      GroupDisplayBinding="{Binding Key}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsBusy}"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      RefreshControlColor="{StaticResource Primary}"
+                      CachingStrategy="RecycleElement">
+                <!--<ListView.Header>
+                    <Frame BackgroundColor="LightBlue">
+                        <Label Text="Current car garage"
+                               HorizontalOptions="Center"
+                               FontSize="Large"/>
+                    </Frame>
+                </ListView.Header>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Car">
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <!--<MenuItem Text="Like"/>
+                                <MenuItem Text="Delete"/>-->
+                            </ViewCell.ContextActions>
+                            <Frame>
+                                <StackLayout Spacing="10"
+                                             BackgroundColor="LightGray"
+                                             Orientation="Horizontal">
+                                    <Image Source="{Binding CarImage}"
+                                       HeightRequest="100"
+                                       WidthRequest="250"
+                                           HorizontalOptions="Start"/>
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding CarName}"/>
+                                        <Label Text="{Binding CarPlateNumber}"
+                                               FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout HorizontalOptions="Center"
+                                 Orientation="Horizontal"
+                                 Padding="20">
+                        <Button Text="Reload items"
+                                HorizontalOptions="Center"
+                                CornerRadius="30"/>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
