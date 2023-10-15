@@ -4,19 +4,23 @@
              x:Class="TestXamarin.Views.CarGarageView"
              xmlns:viewmodel="clr-namespace:TestXamarin.ViewModels"
              xmlns:models="clr-namespace:TestXamarin.Models"
+             xmlns:converters="clr-namespace:TestXamarin.Converters"
              x:DataType="viewmodel:CarGarageViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FavoriteToBackgroundConverter x:Key="FavoriteToBackground"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <viewmodel:CarGarageViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
 
-            <ListView ItemsSource="{Binding CarGroup}"
+            <ListView ItemsSource="{Binding Cars}"
                       HasUnevenRows="True"
                       ItemSelected="ListView_ItemSelected"
                       ItemTapped="ListView_ItemTapped"
-                      
-                      IsGroupingEnabled="True"
                       GroupDisplayBinding="{Binding Key}"
                       IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsBusy}"
@@ -34,12 +38,12 @@
                     <DataTemplate x:DataType="models:Car">
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <!--<MenuItem Text="Like"/>
-                                <MenuItem Text="Delete"/>-->
+                                <MenuItem Text="Like" Clicked="MenuItem_Clicked"/>
+                                <MenuItem Text="Delete"/>
                             </ViewCell.ContextActions>
-                            <Frame>
+                            <Frame BackgroundColor="Azure">
                                 <StackLayout Spacing="10"
-                                             BackgroundColor="LightGray"
+                                             BackgroundColor="{Binding IsFavorited, Converter={StaticResource FavoriteToBackground}}"
                                              Orientation="Horizontal">
                                     <Image Source="{Binding CarImage}"
                                        HeightRequest="100"

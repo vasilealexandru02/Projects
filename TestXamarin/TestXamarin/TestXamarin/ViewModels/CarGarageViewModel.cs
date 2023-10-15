@@ -1,12 +1,7 @@
 ﻿using MvvmHelpers;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TestXamarin.Models;
 
 namespace TestXamarin.ViewModels
@@ -48,10 +43,10 @@ namespace TestXamarin.ViewModels
         public ObservableRangeCollection<Car> Cars { get => _cars; set => _cars = value; }
         public ObservableRangeCollection<Grouping<string, Car>> CarGroup { get => _carGroup; set => _carGroup = value; }
 
-        private void refresh()
+        private async void refresh()
         {
             IsBusy = true;
-            Task.Delay(10000);
+            await Task.Delay(3000);
             IsBusy = false;
         }
 

@@ -1,20 +1,18 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TestXamarin.Models
 {
+
+    [AddINotifyPropertyChangedInterface]
     public class Car
     {
-        private string _carImage;
-
-        private string _carName;
-
-        private string _carPlateNumber;
-
-        public string CarImage { get => _carImage; set => _carImage = value; }
-        public string CarName { get => _carName; set => _carName = value; }
-        public string CarPlateNumber { get => _carPlateNumber; set => _carPlateNumber = value; }
+        public string CarImage { get; set; }
+        public string CarName { get; set; }
+        public string CarPlateNumber { get; set; }
+        public bool IsFavorited { get; set; }
 
         public Car(string carImage, string carName, string carPlateNumber)
         {
