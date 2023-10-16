@@ -71,7 +71,7 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-            
+
         </ResourceDictionary>
     </Shell.Resources>
 
@@ -90,10 +90,17 @@
         content you can do so by calling 
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    <TabBar>
-        <ShellContent Route="My button Page" ContentTemplate="{DataTemplate local:CarGarageView}" />
-    </TabBar>
+    <FlyoutItem Title="Car garage" Icon="car_garage.png">
+        <ShellContent Route="CarGarageView" ContentTemplate="{DataTemplate local:CarGarageView}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Car sqlite" Icon="car.png">
+        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:CarGarageView}" />
+    </FlyoutItem>
 
+    <TabBar>
+        <ShellContent Route="CarGarageView" ContentTemplate="{DataTemplate local:CarGarageView}" />
+    </TabBar>
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.
 

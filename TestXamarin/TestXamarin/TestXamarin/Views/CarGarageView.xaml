@@ -17,6 +17,9 @@
     <ContentPage.BindingContext>
         <viewmodel:CarGarageViewModel/>
     </ContentPage.BindingContext>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" />
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <StackLayout>
 
@@ -29,13 +32,13 @@
                       RefreshCommand="{Binding RefreshCommand}"
                       RefreshControlColor="{StaticResource Primary}"
                       CachingStrategy="RecycleElement">
-                <!--<ListView.Header>
+                <ListView.Header>
                     <Frame BackgroundColor="LightBlue">
                         <Label Text="Current car garage"
                                HorizontalOptions="Center"
                                FontSize="Large"/>
                     </Frame>
-                </ListView.Header>-->
+                </ListView.Header>
                 <ListView.Behaviors>
                     <xct:EventToCommandBehavior
                         EventName="ItemSelected"
@@ -88,6 +91,7 @@
                     </StackLayout>
                 </ListView.Footer>
             </ListView>
+            <Label Text="HOla mundo"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
