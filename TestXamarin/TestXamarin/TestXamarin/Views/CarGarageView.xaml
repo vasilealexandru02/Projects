@@ -5,7 +5,8 @@
              xmlns:viewmodel="clr-namespace:TestXamarin.ViewModels"
              xmlns:models="clr-namespace:TestXamarin.Models"
              xmlns:converters="clr-namespace:TestXamarin.Converters"
-             x:DataType="viewmodel:CarGarageViewModel">
+             x:DataType="viewmodel:CarGarageViewModel"
+             x:Name="CarPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:FavoriteToBackgroundConverter x:Key="FavoriteToBackground"/>
@@ -19,8 +20,7 @@
 
             <ListView ItemsSource="{Binding Cars}"
                       HasUnevenRows="True"
-                      ItemSelected="ListView_ItemSelected"
-                      ItemTapped="ListView_ItemTapped"
+                      SelectedItem="{Binding SelectedCar, Mode=TwoWay}"
                       GroupDisplayBinding="{Binding Key}"
                       IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsBusy}"
@@ -38,24 +38,35 @@
                     <DataTemplate x:DataType="models:Car">
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Like" Clicked="MenuItem_Clicked"/>
+                                <MenuItem Text="Like"
+                                          Command="{Binding Source={x:Reference CarPage}, Path=BindingContext.FavoriteCommand}"
+                                          CommandParameter="{Binding .}"
+                                          />
                                 <MenuItem Text="Delete"/>
                             </ViewCell.ContextActions>
-                            <Frame BackgroundColor="Azure">
-                                <StackLayout Spacing="10"
+                            <StackLayout Spacing="10"
                                              BackgroundColor="{Binding IsFavorited, Converter={StaticResource FavoriteToBackground}}"
                                              Orientation="Horizontal">
-                                    <Image Source="{Binding CarImage}"
-                                       HeightRequest="100"
-                                       WidthRequest="250"
-                                           HorizontalOptions="Start"/>
-                                    <StackLayout VerticalOptions="Center">
-                                        <Label Text="{Binding CarName}"/>
-                                        <Label Text="{Binding CarPlateNumber}"
+                                <Image Source="{Binding CarImage}"
+                                       HeightRequest="150"
+                                       WidthRequest="200"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"/>
+                                <StackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center">
+                                    <Label Text="{Binding CarName}"/>
+                                    <Label Text="{Binding CarPlateNumber}"
                                                FontAttributes="Bold"/>
-                                    </StackLayout>
+
                                 </StackLayout>
-                            </Frame>
+                                <Button Text="Favorite"
+                                                CommandParameter="{Binding .}"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CarGarageViewModel}},Path=FavoriteCommand}"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"/>
+
+                            </StackLayout>
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

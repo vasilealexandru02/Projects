@@ -3,6 +3,7 @@ using MvvmHelpers.Commands;
 using System.Linq;
 using System.Threading.Tasks;
 using TestXamarin.Models;
+using Xamarin.Forms;
 
 namespace TestXamarin.ViewModels
 {
@@ -12,7 +13,13 @@ namespace TestXamarin.ViewModels
 
         private ObservableRangeCollection<Grouping<string, Car>> _carGroup;
 
-        public Command RefreshCommand { get; set; }
+
+        private Car _selectedCar;
+
+        public MvvmHelpers.Commands.Command RefreshCommand { get; set; }
+
+
+        public AsyncCommand<Car> FavoriteCommand { get; set; }
 
 
         public CarGarageViewModel()
@@ -37,11 +44,41 @@ namespace TestXamarin.ViewModels
             Cars.RemoveRange(Cars.Take(2));
             CarGroup.Add(new Grouping<string, Car>("Car group 1", Cars.Take(2)));
 
-            RefreshCommand = new Command(refresh);
+            FavoriteCommand = new AsyncCommand<Car>(Favorite);
+            RefreshCommand = new MvvmHelpers.Commands.Command(refresh);
         }
 
         public ObservableRangeCollection<Car> Cars { get => _cars; set => _cars = value; }
         public ObservableRangeCollection<Grouping<string, Car>> CarGroup { get => _carGroup; set => _carGroup = value; }
+        public Car SelectedCar
+        {
+            get => _selectedCar;
+            set
+            {
+                if (value != null)
+                {
+                    Application.Current.MainPage.DisplayAlert("Selected", value.CarName, "OK");
+                    value = null;
+                }
+
+                _selectedCar = value;
+                OnPropertyChanged();
+            }
+        }
+
+        async Task Favorite(Car car)
+        {
+            if (car.IsFavorited)
+            {
+                car.IsFavorited = false;
+                await Application.Current.MainPage.DisplayAlert("Favorited!", "This car has been deleted from your favorite cars :(!", "OK");
+            }
+            else
+            {
+                car.IsFavorited = true;
+                await Application.Current.MainPage.DisplayAlert("Favorited!", "This car has been added to your favorite cars!", "OK");
+            }
+        }
 
         private async void refresh()
         {
