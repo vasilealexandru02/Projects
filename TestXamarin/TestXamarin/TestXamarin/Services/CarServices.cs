@@ -50,7 +50,7 @@ namespace TestXamarin.Services
             await db.DeleteAsync<Car>(carId);
         }
 
-        public static async Task<IEnumerable<Car>> GetCar()
+        public static async Task<List<Car>> GetCar()
         {
             await Init();
 

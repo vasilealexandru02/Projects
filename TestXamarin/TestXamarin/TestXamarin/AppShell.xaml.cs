@@ -10,6 +10,7 @@ namespace TestXamarin
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(CarGarageView), typeof(CarGarageView));
+            Routing.RegisterRoute(nameof(CarDatabaseView), typeof(CarDatabaseView));
         }
 
     }

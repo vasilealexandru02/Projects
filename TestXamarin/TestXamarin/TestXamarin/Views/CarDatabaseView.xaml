@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Views.CarDatabaseView"
+             xmlns:viewmodels="clr-namespace:TestXamarin.ViewModels">
+    <ContentPage.BindingContext>
+        <viewmodels:CarDatabaseViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add new car" />
+        <ToolbarItem Text="Delete last car" Command="{Binding ClearLastCar}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Cars}"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsRefreshing="{Binding IsBusy}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="200">
+                        <StackLayout BackgroundColor="AntiqueWhite"
+                                     Orientation="Horizontal"
+                                     Padding="20">
+                            <StackLayout HorizontalOptions="End"
+                                         VerticalOptions="Center"
+                                         WidthRequest="150"
+                                         HeightRequest="150">
+                                <Image Source="{Binding CarImage}"/>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="Center">
+                                <Label Text="{Binding CarName}" 
+                                       FontSize="Medium"/>
+                                <Label Text="{Binding CarPlateNumber}"
+                                       FontSize="Medium"/>
+                            </StackLayout>
+
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

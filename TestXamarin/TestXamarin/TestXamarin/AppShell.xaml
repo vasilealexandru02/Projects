@@ -93,14 +93,14 @@
     <FlyoutItem Title="Car garage" Icon="car_garage.png">
         <ShellContent Route="CarGarageView" ContentTemplate="{DataTemplate local:CarGarageView}" />
     </FlyoutItem>
-    
+
     <FlyoutItem Title="Car sqlite" Icon="car.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:CarGarageView}" />
+        <ShellContent Route="CarDatabaseView" ContentTemplate="{DataTemplate local:CarDatabaseView}" />
     </FlyoutItem>
 
-    <TabBar>
-        <ShellContent Route="CarGarageView" ContentTemplate="{DataTemplate local:CarGarageView}" />
-    </TabBar>
+    <!--<TabBar>
+        <ShellContent Route="CarDatabaseView" ContentTemplate="{DataTemplate local:CarDatabaseView}" />
+    </TabBar>-->
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.
 

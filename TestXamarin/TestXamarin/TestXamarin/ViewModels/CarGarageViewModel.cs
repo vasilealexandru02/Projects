@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 namespace TestXamarin.ViewModels
 {
+
     public class CarGarageViewModel : BaseViewModel
     {
         private ObservableRangeCollection<Car> _cars;

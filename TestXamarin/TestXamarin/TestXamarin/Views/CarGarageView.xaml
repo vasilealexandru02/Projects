@@ -17,9 +17,7 @@
     <ContentPage.BindingContext>
         <viewmodel:CarGarageViewModel/>
     </ContentPage.BindingContext>
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" />
-    </ContentPage.ToolbarItems>-->
+  
     <ContentPage.Content>
         <StackLayout>
 
