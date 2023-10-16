@@ -21,6 +21,8 @@ namespace TestXamarin.ViewModels
 
         public AsyncCommand<Car> FavoriteCommand { get; set; }
 
+        public AsyncCommand<object> SelectedCommand { get; set; }
+
 
         public CarGarageViewModel()
         {
@@ -46,6 +48,7 @@ namespace TestXamarin.ViewModels
 
             FavoriteCommand = new AsyncCommand<Car>(Favorite);
             RefreshCommand = new MvvmHelpers.Commands.Command(refresh);
+            SelectedCommand = new AsyncCommand<object>(Selected);
         }
 
         public ObservableRangeCollection<Car> Cars { get => _cars; set => _cars = value; }
@@ -53,19 +56,26 @@ namespace TestXamarin.ViewModels
         public Car SelectedCar
         {
             get => _selectedCar;
-            set
-            {
-                if (value != null)
-                {
-                    Application.Current.MainPage.DisplayAlert("Selected", value.CarName, "OK");
-                    value = null;
-                }
-
-                _selectedCar = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _selectedCar, value);
         }
 
+
+        /// <summary>
+        /// Selected event to command
+        /// </summary>
+        /// <param name="car"></param>
+        /// <returns></returns>
+        async Task Selected(object args)
+        {
+
+            Car car = args as Car;
+
+            if (car == null) return;
+
+            SelectedCar = null;
+
+            await Application.Current.MainPage.DisplayAlert("Selected event: ", car.CarName, "OK");
+        }
         async Task Favorite(Car car)
         {
             if (car.IsFavorited)

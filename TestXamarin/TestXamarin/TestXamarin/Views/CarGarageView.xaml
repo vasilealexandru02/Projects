@@ -4,12 +4,14 @@
              x:Class="TestXamarin.Views.CarGarageView"
              xmlns:viewmodel="clr-namespace:TestXamarin.ViewModels"
              xmlns:models="clr-namespace:TestXamarin.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:converters="clr-namespace:TestXamarin.Converters"
              x:DataType="viewmodel:CarGarageViewModel"
              x:Name="CarPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:FavoriteToBackgroundConverter x:Key="FavoriteToBackground"/>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgs"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
@@ -34,6 +36,12 @@
                                FontSize="Large"/>
                     </Frame>
                 </ListView.Header>-->
+                <ListView.Behaviors>
+                    <xct:EventToCommandBehavior
+                        EventName="ItemSelected"
+                        Command="{Binding SelectedCommand}"
+                        EventArgsConverter="{StaticResource ItemSelectedEventArgs}"/>
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Car">
                         <ViewCell>
