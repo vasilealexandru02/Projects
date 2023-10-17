@@ -7,21 +7,24 @@
         <viewmodels:CarDatabaseViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add new car" />
-        <ToolbarItem Text="Delete last car" Command="{Binding ClearLastCar}"/>
+        <ToolbarItem IconImageSource="add_car_icon.png" Command="{Binding AddCar}" />
+        <ToolbarItem IconImageSource="delete_car_icon.png" Command="{Binding DeleteSelectedCar}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Cars}"
                   IsPullToRefreshEnabled="True"
                   RefreshCommand="{Binding RefreshCommand}"
+                  SelectedItem="{Binding SelectedCar}"
                   IsRefreshing="{Binding IsBusy}"
                   HasUnevenRows="True">
+           
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell Height="200">
+                    <ViewCell Height="150">
                         <StackLayout BackgroundColor="AntiqueWhite"
                                      Orientation="Horizontal"
-                                     Padding="20">
+                                     Padding="5"
+                                     Margin="5">
                             <StackLayout HorizontalOptions="End"
                                          VerticalOptions="Center"
                                          WidthRequest="150"
