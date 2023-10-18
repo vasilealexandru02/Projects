@@ -36,7 +36,9 @@ namespace TestXamarin.ViewModels
 
         public async Task goBack()
         {
-            await Shell.Current.GoToAsync("//CarDatabaseView");
+            await Shell.Current.GoToAsync("//CarDatabaseView", false);
+            //await Shell.Current.Navigation.PopModalAsync()
+
         }
 
     }
