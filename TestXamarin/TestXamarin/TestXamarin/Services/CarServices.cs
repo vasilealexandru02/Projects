@@ -59,17 +59,25 @@ namespace TestXamarin.Services
         {
             await Init();
             await db.DeleteAsync<Car>(carId);
-           
+
 
         }
 
-        public static async Task<List<Car>> GetCar()
+        public static async Task<List<Car>> GetCars()
         {
             await Init();
 
             var cars = await db.Table<Car>().ToListAsync();
 
             return cars;
+        }
+
+        public static async Task<Car> GetCarById(int id)
+        {
+            var car = await db.Table<Car>().FirstOrDefaultAsync(c=>c.Id==id);
+
+            return car;
+
         }
     }
 }

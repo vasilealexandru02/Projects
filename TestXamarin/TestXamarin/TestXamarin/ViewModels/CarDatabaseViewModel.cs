@@ -1,13 +1,11 @@
 ﻿using MvvmHelpers;
 using MvvmHelpers.Commands;
 using PropertyChanged;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TestXamarin.Models;
 using TestXamarin.Services;
+using TestXamarin.Views;
 using Xamarin.Forms;
 
 namespace TestXamarin.ViewModels
@@ -16,12 +14,31 @@ namespace TestXamarin.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class CarDatabaseViewModel : BaseViewModel
     {
-        public List<Car> Cars { get; set; }
+        private Car selectedCar;
+        //private Car previousSelectedCar;
+
+
+        public List<Car> Cars
+        { get; set; }
 
         public AsyncCommand RefreshCommand { get; set; }
         public AsyncCommand DeleteSelectedCar { get; set; }
         public AsyncCommand AddCar { get; set; }
-        public Car SelectedCar { get; set; }
+
+        public AsyncCommand SeeCarDetails { get; set; }
+
+        public Car SelectedCar
+        {
+            get => selectedCar;
+            set
+            {
+                selectedCar = null;
+                PreviousSelectedCar = value;
+
+            }
+        }
+
+        public Car PreviousSelectedCar { get; set; }
 
         public CarDatabaseViewModel()
         {
@@ -29,6 +46,7 @@ namespace TestXamarin.ViewModels
             RefreshCommand = new AsyncCommand(refresh);
             AddCar = new AsyncCommand(addCar);
             DeleteSelectedCar = new AsyncCommand(deleteSelectedCar);
+            SeeCarDetails = new AsyncCommand(seeCarDetails);
             Initialize();
 
         }
@@ -41,7 +59,7 @@ namespace TestXamarin.ViewModels
 
         public async Task getCars()
         {
-            Cars = await CarServices.GetCar();
+            Cars = await CarServices.GetCars();
             // method that get car
         }
 
@@ -111,6 +129,12 @@ namespace TestXamarin.ViewModels
             }
 
             await getCars();
+
+        }
+
+        public async Task seeCarDetails()
+        {
+            await Shell.Current.GoToAsync($"{nameof(CarDetailsView)}?CarIdParameter={PreviousSelectedCar.Id}");
 
         }
 
