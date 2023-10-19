@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using TestXamarin.ViewModels;
+using Xamarin.Forms;
 
 namespace TestXamarin.Views
 {
@@ -16,6 +17,17 @@ namespace TestXamarin.Views
             {
                 var list = ((ListView)sender).SelectedItem = null;
             }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            var carDatabaseViewModel = BindingContext as CarDatabaseViewModel;
+
+            await carDatabaseViewModel.getCars();
+
+
+
         }
     }
 }

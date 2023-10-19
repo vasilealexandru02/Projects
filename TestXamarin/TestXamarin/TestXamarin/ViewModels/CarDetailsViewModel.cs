@@ -19,10 +19,13 @@ namespace TestXamarin.ViewModels
 
         public AsyncCommand GoBackCommand { get; set; }
 
+        public AsyncCommand DeleteCarCommand { get; set; }
+
         public CarDetailsViewModel(int carIdParameter)
         {
 
             CarIdParameter = carIdParameter;
+            DeleteCarCommand = new AsyncCommand(deleteCar);
             Initialize();
 
         }
@@ -38,6 +41,19 @@ namespace TestXamarin.ViewModels
         {
             await Shell.Current.GoToAsync("//CarDatabaseView", false);
             //await Shell.Current.Navigation.PopModalAsync()
+
+        }
+
+        public async Task deleteCar()
+        {
+            if (CarToShow != null && CarIdParameter >= 0)
+            {
+                await CarServices.RemoveCar(CarToShow.Id);
+                await Application.Current.MainPage.DisplayAlert("Deleted", "Car " + CarToShow.CarName + " was deleted succesfully", "OK");
+                await goBack();
+
+
+            }
 
         }
 

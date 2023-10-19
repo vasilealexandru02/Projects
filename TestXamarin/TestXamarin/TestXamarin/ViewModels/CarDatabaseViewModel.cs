@@ -22,7 +22,6 @@ namespace TestXamarin.ViewModels
         { get; set; }
 
         public AsyncCommand RefreshCommand { get; set; }
-        public AsyncCommand DeleteSelectedCar { get; set; }
         public AsyncCommand AddCar { get; set; }
 
         public AsyncCommand SeeCarDetails { get; set; }
@@ -45,15 +44,8 @@ namespace TestXamarin.ViewModels
             Cars = new List<Car>();
             RefreshCommand = new AsyncCommand(refresh);
             AddCar = new AsyncCommand(addCar);
-            DeleteSelectedCar = new AsyncCommand(deleteSelectedCar);
             SeeCarDetails = new AsyncCommand(seeCarDetails);
-            Initialize();
 
-        }
-
-        private async void Initialize()
-        {
-            await getCars();
         }
 
 
@@ -70,26 +62,6 @@ namespace TestXamarin.ViewModels
             // method that deletes car 
 
         }
-
-        private async Task deleteSelectedCar()
-        {
-            if (SelectedCar != null)
-            {
-                await CarServices.RemoveCar(SelectedCar.Id);
-                await Application.Current.MainPage.DisplayAlert("Deleted", "Car " + SelectedCar.CarName + " was deleted succesfully", "OK");
-                await getCars();
-                SelectedCar = null;
-            }
-            else if (Cars.Count == 1)
-            {
-                await Application.Current.MainPage.DisplayAlert("Unable to delete car", "Cannot delete last car of the list!", "OK");
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Select a car", "You must select a car first!", "OK");
-            }
-        }
-
 
         /// <summary>
         /// Refreshes the list view

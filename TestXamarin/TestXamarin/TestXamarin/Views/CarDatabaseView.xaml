@@ -9,7 +9,6 @@
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="add_car_icon.png" Command="{Binding AddCar}" />
-        <ToolbarItem IconImageSource="delete_car_icon.png" Command="{Binding DeleteSelectedCar}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Cars}"
