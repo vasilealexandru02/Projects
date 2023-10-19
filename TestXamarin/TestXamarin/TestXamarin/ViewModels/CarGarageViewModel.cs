@@ -47,7 +47,6 @@ namespace TestXamarin.ViewModels
             CarGroup.Add(new Grouping<string, Car>("Car group 1", Cars.Take(2)));
             Cars.RemoveRange(Cars.Take(2));
             CarGroup.Add(new Grouping<string, Car>("Car group 1", Cars.Take(2)));
-
             FavoriteCommand = new AsyncCommand<Car>(Favorite);
             RefreshCommand = new MvvmHelpers.Commands.Command(refresh);
             SelectedCommand = new AsyncCommand<object>(Selected);

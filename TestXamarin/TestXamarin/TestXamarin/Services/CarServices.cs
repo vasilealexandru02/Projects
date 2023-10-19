@@ -55,6 +55,14 @@ namespace TestXamarin.Services
             var id = await db.InsertAsync(car);
         }
 
+        public static async Task AddCar(Car car)
+        {
+            await Init();
+
+            await db.InsertAsync(car);
+        }
+
+
         public static async Task RemoveCar(int carId)
         {
             await Init();
@@ -74,7 +82,7 @@ namespace TestXamarin.Services
 
         public static async Task<Car> GetCarById(int id)
         {
-            var car = await db.Table<Car>().FirstOrDefaultAsync(c=>c.Id==id);
+            var car = await db.Table<Car>().FirstOrDefaultAsync(c => c.Id == id);
 
             return car;
 

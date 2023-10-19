@@ -12,6 +12,7 @@ namespace TestXamarin
             Routing.RegisterRoute(nameof(CarGarageView), typeof(CarGarageView));
             Routing.RegisterRoute(nameof(CarDatabaseView), typeof(CarDatabaseView));
             Routing.RegisterRoute(nameof(CarDetailsView), typeof(CarDetailsView));
+            Routing.RegisterRoute(nameof(AddCarView), typeof(AddCarView));
         }
 
     }

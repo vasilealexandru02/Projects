@@ -109,26 +109,26 @@ namespace TestXamarin.ViewModels
         /// <returns></returns>
         private async Task addCar()
         {
-            string carImage = await Application.Current.MainPage.DisplayPromptAsync("Car image", "Introduce an image URL for your new car");
+            //string carImage = await Application.Current.MainPage.DisplayPromptAsync("Car image", "Introduce an image URL for your new car");
 
 
-            string carName = await Application.Current.MainPage.DisplayPromptAsync("Car name", "Introduce your new car name");
-            string carPlateNumber = await Application.Current.MainPage.DisplayPromptAsync("Car image", "Introduce the plate number for your car");
+            //string carName = await Application.Current.MainPage.DisplayPromptAsync("Car name", "Introduce your new car name");
+            //string carPlateNumber = await Application.Current.MainPage.DisplayPromptAsync("Car image", "Introduce the plate number for your car");
 
-            if (carImage == string.Empty && (carName != null && carPlateNumber != null))
-            {
-                await CarServices.AddCar(carName, carPlateNumber);
-            }
-            else if (carImage != string.Empty && (carName != null && carPlateNumber != null))
-            {
-                await CarServices.AddCar(carImage, carName, carPlateNumber);
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Couldn't create you car :(", "OK");
-            }
+            //if (carImage == string.Empty && (carName != null && carPlateNumber != null))
+            //{
+            //    await CarServices.AddCar(carName, carPlateNumber);
+            //}
+            //else if (carImage != string.Empty && (carName != null && carPlateNumber != null))
+            //{
+            //    await CarServices.AddCar(carImage, carName, carPlateNumber);
+            //}
+            //else
+            //{
+            //    await Application.Current.MainPage.DisplayAlert("Error", "Couldn't create you car :(", "OK");
+            //}
 
-            await getCars();
+            await Shell.Current.GoToAsync(nameof(AddCarView));
 
         }
 
