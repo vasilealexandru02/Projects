@@ -26,6 +26,8 @@ namespace TestXamarin.ViewModels
 
         public AsyncCommand SeeCarDetails { get; set; }
 
+        public AsyncCommand LogoutCommand { get; set; }
+
         public Car SelectedCar
         {
             get => selectedCar;
@@ -44,7 +46,9 @@ namespace TestXamarin.ViewModels
             Cars = new List<Car>();
             RefreshCommand = new AsyncCommand(refresh);
             AddCar = new AsyncCommand(addCar);
+            LogoutCommand = new AsyncCommand(logout);
             SeeCarDetails = new AsyncCommand(seeCarDetails);
+
 
         }
 
@@ -81,33 +85,18 @@ namespace TestXamarin.ViewModels
         /// <returns></returns>
         private async Task addCar()
         {
-            //string carImage = await Application.Current.MainPage.DisplayPromptAsync("Car image", "Introduce an image URL for your new car");
-
-
-            //string carName = await Application.Current.MainPage.DisplayPromptAsync("Car name", "Introduce your new car name");
-            //string carPlateNumber = await Application.Current.MainPage.DisplayPromptAsync("Car image", "Introduce the plate number for your car");
-
-            //if (carImage == string.Empty && (carName != null && carPlateNumber != null))
-            //{
-            //    await CarServices.AddCar(carName, carPlateNumber);
-            //}
-            //else if (carImage != string.Empty && (carName != null && carPlateNumber != null))
-            //{
-            //    await CarServices.AddCar(carImage, carName, carPlateNumber);
-            //}
-            //else
-            //{
-            //    await Application.Current.MainPage.DisplayAlert("Error", "Couldn't create you car :(", "OK");
-            //}
-
-            await Shell.Current.GoToAsync(nameof(AddCarView));
-
+            await Shell.Current.GoToAsync($"{nameof(AddCarView)}", true);
         }
 
         public async Task seeCarDetails()
         {
             await Shell.Current.GoToAsync($"{nameof(CarDetailsView)}?CarIdParameter={PreviousSelectedCar.Id}");
 
+        }
+
+        public async Task logout()
+        {
+            await Shell.Current.GoToAsync($"//LoginPage", true);
         }
 
 

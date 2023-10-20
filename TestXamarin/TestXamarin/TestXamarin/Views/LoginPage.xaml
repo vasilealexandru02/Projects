@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Views.LoginPage"
+             xmlns:viewmodel="clr-namespace:TestXamarin.ViewModels"
+             Shell.FlyoutBehavior="Disabled">
+
+    <ContentPage.BindingContext>
+        <viewmodel:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#FBC02D"
+                     Padding="0,20,0,0">
+            <StackLayout HorizontalOptions="Center"
+                         BackgroundColor="#544727"
+                         Padding="20">
+                <Label Text="Introduce your username: "
+                   FontSize="Medium"
+                       TextColor="White"/>
+                <Entry TextColor="White"
+                       Keyboard="Text"
+                       Text="{Binding Username}"
+                       ClearButtonVisibility="WhileEditing"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center"
+                         BackgroundColor="#544727"
+                         Padding="20">
+                <Label Text="Introduce your password "
+                       
+                   FontSize="Medium"
+                       TextColor="White"/>
+
+                <Entry TextColor="White"
+                       IsPassword="True"
+                       Text="{Binding Password}"
+                       ClearButtonVisibility="WhileEditing"/>
+
+            </StackLayout>
+            <Button Text="login"
+                    HorizontalOptions="Center"
+                    TextColor="Black"
+                    BackgroundColor="#E65100"
+                    Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

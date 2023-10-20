@@ -9,6 +9,7 @@
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="add_car_icon.png" Command="{Binding AddCar}" />
+        <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Cars}"
