@@ -17,19 +17,17 @@
     <ContentPage.BindingContext>
         <viewmodel:CarGarageViewModel/>
     </ContentPage.BindingContext>
-  
+
     <ContentPage.Content>
         <StackLayout>
 
             <ListView ItemsSource="{Binding Cars}"
-                      HasUnevenRows="True"
                       SelectedItem="{Binding SelectedCar, Mode=TwoWay}"
                       GroupDisplayBinding="{Binding Key}"
-                      IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsBusy}"
                       RefreshCommand="{Binding RefreshCommand}"
-                      RefreshControlColor="{StaticResource Primary}"
-                      CachingStrategy="RecycleElement">
+                      CachingStrategy="RecycleElement"
+                      Style="{StaticResource MyListViewStyle}">
                 <ListView.Header>
                     <Frame BackgroundColor="LightBlue">
                         <Label Text="Current car garage"
@@ -89,7 +87,6 @@
                     </StackLayout>
                 </ListView.Footer>
             </ListView>
-            <Label Text="HOla mundo"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

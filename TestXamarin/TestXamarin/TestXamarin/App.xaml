@@ -35,6 +35,6 @@
                 <Setter Property="RefreshControlColor" Value="{StaticResource DarkOrange}"/>
                 <Setter Property="HasUnevenRows" Value="True"/>
             </Style>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

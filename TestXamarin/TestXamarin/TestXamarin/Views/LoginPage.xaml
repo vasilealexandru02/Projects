@@ -23,7 +23,7 @@
                        ClearButtonVisibility="WhileEditing"/>
             </StackLayout>
             <StackLayout HorizontalOptions="Center"
-                         BackgroundColor="#544727"
+                         BackgroundColor="{StaticResource DarkYellowBGColor}"
                          Padding="20">
                 <Label Text="Introduce your password "
                        
