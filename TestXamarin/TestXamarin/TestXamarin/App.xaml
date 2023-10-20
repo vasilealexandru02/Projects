@@ -27,6 +27,14 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+            <Color x:Key="DarkOrange">#cc4f25</Color>
+            <Color x:Key="MustardColor">#a0a027</Color>
+            <Color x:Key="DarkYellowBGColor">#544727</Color>
+            <Style x:Key="MyListViewStyle" TargetType="ListView">
+                <Setter Property="IsPullToRefreshEnabled" Value="True"/>
+                <Setter Property="RefreshControlColor" Value="{StaticResource DarkOrange}"/>
+                <Setter Property="HasUnevenRows" Value="True"/>
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>
