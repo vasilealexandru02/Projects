@@ -93,11 +93,21 @@
     <FlyoutItem Title="Login" FlyoutItemIsVisible="False" >
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Car garage" Icon="car_garage.png">
+    <FlyoutItem Title="Car garage">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="SolidFree"
+                             Glyph="{StaticResource Car}"
+                             Color="Black"/>
+        </FlyoutItem.Icon>
         <ShellContent Route="CarGarageView" ContentTemplate="{DataTemplate local:CarGarageView}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Car sqlite" Icon="car.png">
+    <FlyoutItem Title="Car sqlite">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="SolidFree"
+                             Glyph="{StaticResource CarGarage}"
+                             Color="Black"/>
+        </FlyoutItem.Icon>
         <ShellContent Route="CarDatabaseView" ContentTemplate="{DataTemplate local:CarDatabaseView}" />
     </FlyoutItem>
 

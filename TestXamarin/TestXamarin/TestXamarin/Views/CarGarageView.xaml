@@ -6,6 +6,7 @@
              xmlns:models="clr-namespace:TestXamarin.Models"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:converters="clr-namespace:TestXamarin.Converters"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
              x:DataType="viewmodel:CarGarageViewModel"
              x:Name="CarPage">
     <ContentPage.Resources>
@@ -30,9 +31,12 @@
                       Style="{StaticResource MyListViewStyle}">
                 <ListView.Header>
                     <Frame BackgroundColor="LightBlue">
-                        <Label Text="Current car garage"
+                        <Label Text="{x:Static fontawesome:FontAwesomeIcons.Plane}"
+                               FontFamily="SolidFree"
+                               TextColor="Black"
                                HorizontalOptions="Center"
                                FontSize="Large"/>
+
                     </Frame>
                 </ListView.Header>
                 <ListView.Behaviors>

@@ -35,6 +35,10 @@
                 <Setter Property="RefreshControlColor" Value="{StaticResource DarkOrange}"/>
                 <Setter Property="HasUnevenRows" Value="True"/>
             </Style>
+
+            <x:String x:Key="Film">&#xf008;</x:String>
+            <x:String x:Key="Car">&#xf1b9;</x:String>
+            <x:String x:Key="CarGarage">&#xe4de;</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
