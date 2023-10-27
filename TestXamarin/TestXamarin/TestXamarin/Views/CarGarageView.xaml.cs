@@ -48,6 +48,7 @@ namespace TestXamarin.Views
             }
             else
             {
+                // test for git exercise
                 car.IsFavorited = true;
                 await DisplayAlert("Favorited!", "This car has been added to your favorite cars!", "OK");
             }
