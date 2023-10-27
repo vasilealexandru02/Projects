@@ -6,6 +6,7 @@ namespace TestXamarin.Views
     {
         public AddCarView()
         {
+            // test commit
             InitializeComponent();
         }
     }
